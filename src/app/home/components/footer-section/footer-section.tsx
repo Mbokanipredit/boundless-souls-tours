@@ -5,12 +5,11 @@ import FooterCopyright from "./footer-copyright";
 
 function FooterSection() {
   const companyLinks = [
-    { label: "About Us", link: "#" },
-    { label: "Careers", link: "#" },
-    { label: "Blog", link: "#" },
-    { label: "Press", link: "#" },
-    { label: "Gift Cards", link: "#" },
-    { label: "Magazine", link: "#" },
+    { label: "About Us", link: "/about" },
+    { label: "Photo Gallery", link: "/gallery" },
+    { label: "Experiences", link: "/experiences" },
+    { label: "Services", link: "/services" },
+    { label: "Plan Your Trip", link: "/plan-trip" },
   ];
 
   const supportLinks = [

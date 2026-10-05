@@ -78,6 +78,10 @@ export const navigationMenu: NavigationItem[] = [
     ],
   },
   {
+    label: "Gallery",
+    link: "/gallery",
+  },
+  {
     label: "About Us",
     link: "/about",
   },

@@ -3,6 +3,7 @@ import HeroSection from "./home/components/hero-section/hero";
 import AboutSection from "./home/components/about-section/about-section";
 import RwandaExperiences from "./home/components/rwanda-experiences/rwanda-experiences";
 import RwandaServices from "./home/components/rwanda-services/rwanda-services";
+import GalleryPreview from "./home/components/gallery-preview/gallery-preview";
 import WhyChooseUs from "./home/components/why-choose-us/why-choose-us";
 import CustomExperienceBuilder from "./home/components/custom-experience-builder/custom-experience-builder";
 import ReadyToExplore from "./home/components/ready-to-explore/ready-to-explore";
@@ -20,6 +21,7 @@ export default function RootPage() {
         <AboutSection />
         <RwandaExperiences />
         <RwandaServices />
+        <GalleryPreview />
         <WhyChooseUs />
         <CustomExperienceBuilder />
         <ReadyToExplore />
