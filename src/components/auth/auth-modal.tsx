@@ -52,11 +52,6 @@ export default function AuthModal({ isOpen, onClose, defaultTab = "login" }: Aut
     }
   };
 
-  const handleDemoUser = () => {
-    loginUser("traveler@example.com", "password");
-    onClose();
-  };
-
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
       <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-6 shadow-2xl relative text-white">
@@ -216,19 +211,6 @@ export default function AuthModal({ isOpen, onClose, defaultTab = "login" }: Aut
             </Button>
           </form>
         )}
-
-        {/* Demo Fast Login */}
-        <div className="pt-2 border-t border-slate-800 text-center space-y-2">
-          <p className="text-[11px] text-slate-400">Quick Testing Demo Login:</p>
-          <Button
-            type="button"
-            variant="outline"
-            onClick={handleDemoUser}
-            className="w-full bg-slate-800 hover:bg-slate-700 text-emerald-400 border-slate-700 text-xs font-bold rounded-xl py-2"
-          >
-            ⚡ Quick Login as Demo Traveler
-          </Button>
-        </div>
       </div>
     </div>
   );

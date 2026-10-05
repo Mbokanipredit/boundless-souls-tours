@@ -92,10 +92,6 @@ export default function CustomExperienceBuilder() {
     window.open(`https://wa.me/250788000000?text=${message}`, "_blank");
   };
 
-  const handleQuickDemoLogin = () => {
-    loginUser("traveler@example.com", "password");
-  };
-
   return (
     <section id="plan-trip" className="py-20 bg-slate-950 text-white relative">
       <div className="container mx-auto px-4 max-w-6xl">
@@ -138,22 +134,13 @@ export default function CustomExperienceBuilder() {
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+              <div className="flex justify-center pt-2">
                 <Button
                   onClick={() => setIsAuthModalOpen(true)}
                   className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-6 rounded-2xl gap-2 shadow-lg shadow-emerald-950/50 text-base"
                 >
                   <LogIn className="h-5 w-5" />
                   <span>Sign In or Register to Continue</span>
-                </Button>
-
-                <Button
-                  onClick={handleQuickDemoLogin}
-                  variant="outline"
-                  className="w-full sm:w-auto border-slate-700 hover:bg-slate-800 text-slate-300 font-semibold px-6 py-6 rounded-2xl gap-2 text-sm"
-                >
-                  <UserCheck className="h-4 w-4 text-emerald-400" />
-                  <span>Quick Sign In (Demo Traveler)</span>
                 </Button>
               </div>
             </motion.div>
