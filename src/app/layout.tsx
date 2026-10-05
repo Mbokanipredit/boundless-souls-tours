@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   title: "Boundless Souls Tours - Where Every Journey Touches the Soul",
   description:
     "At Boundless Souls Tours, we create memorable travel and lifestyle experiences in Rwanda. Gorilla trekking in Musanze & Kinigi, Akagera wilderness safaris, Bigogwe countryside, Lake Kivu, Kigali city tours, apartment bookings, private chefs, and private drivers.",
+  icons: {
+    icon: "/images/logo.jpeg",
+    shortcut: "/images/logo.jpeg",
+    apple: "/images/logo.jpeg",
+  },
   keywords: [
     "Boundless Souls Tours",
     "Rwanda Gorillas",
