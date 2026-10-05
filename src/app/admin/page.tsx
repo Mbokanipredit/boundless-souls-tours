@@ -247,7 +247,7 @@ info@boundlesssouls.com`,
     subtitle: "",
     tagline: "",
     description: "",
-    image: "/images/gorilla-trek.png",
+    image: "/images/pics/1.jpeg",
     badge: "Special Safari",
     highlights: "",
   });
@@ -322,7 +322,7 @@ info@boundlesssouls.com`,
       subtitle: newExp.subtitle || "Authentic Rwandan Experience",
       tagline: newExp.tagline || "Discover something unique.",
       description: newExp.description || "An unforgettable journey tailored by Boundless Souls Tours.",
-      image: newExp.image || "/images/gorilla-trek.png",
+      image: newExp.image || "/images/pics/1.jpeg",
       badge: newExp.badge || "Experience",
       highlights: newExp.highlights
         ? newExp.highlights.split(",").map((h) => h.trim())
@@ -334,7 +334,7 @@ info@boundlesssouls.com`,
       subtitle: "",
       tagline: "",
       description: "",
-      image: "/images/gorilla-trek.png",
+      image: "/images/pics/1.jpeg",
       badge: "Special Safari",
       highlights: "",
     });
@@ -1606,11 +1606,22 @@ info@boundlesssouls.com`,
                     onChange={(e) => setNewExp({ ...newExp, image: e.target.value })}
                     className="w-full h-9 rounded-md border border-slate-800 bg-slate-950 px-3 text-xs text-white"
                   >
-                    <option value="/images/gorilla-trek.png">Gorilla Trek (Kinigi)</option>
-                    <option value="/images/akagera-safari.png">Akagera Safari</option>
-                    <option value="/images/bigogwe-hills.png">Bigogwe Countryside</option>
-                    <option value="/images/lake-kivu.png">Lake Kivu</option>
-                    <option value="/images/kigali-city.png">Kigali City</option>
+                    <option value="/images/pics/1.jpeg">Photo 1 (Gorilla / Volcanoes)</option>
+                    <option value="/images/pics/2.jpeg">Photo 2 (Akagera Wildlife)</option>
+                    <option value="/images/pics/3.jpeg">Photo 3 (Bigogwe Hills)</option>
+                    <option value="/images/pics/4.jpeg">Photo 4 (Lake Kivu)</option>
+                    <option value="/images/pics/5.jpeg">Photo 5 (Kigali City)</option>
+                    <option value="/images/pics/6.jpeg">Photo 6</option>
+                    <option value="/images/pics/7.jpeg">Photo 7</option>
+                    <option value="/images/pics/8.jpeg">Photo 8</option>
+                    <option value="/images/pics/9.jpeg">Photo 9</option>
+                    <option value="/images/pics/10.jpeg">Photo 10</option>
+                    <option value="/images/pics/11.jpeg">Photo 11</option>
+                    <option value="/images/pics/12.jpeg">Photo 12</option>
+                    <option value="/images/pics/13.jpeg">Photo 13</option>
+                    <option value="/images/pics/14.jpeg">Photo 14</option>
+                    <option value="/images/pics/15.jpeg">Photo 15</option>
+                    <option value="/images/pics/16.jpeg">Photo 16</option>
                   </select>
                 </div>
               </div>
