@@ -1,24 +1,34 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Calendar, Users, MapPin, Check, Send, PhoneCall } from "lucide-react";
+import { Sparkles, MapPin, Check, Send, PhoneCall, Lock, UserCheck, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useData } from "@/context/data-context";
 import { useAuth } from "@/context/auth-context";
+import AuthModal from "@/components/auth/auth-modal";
 
 export default function CustomExperienceBuilder() {
   const { addBooking } = useData();
-  const { user } = useAuth();
+  const { user, loginUser } = useAuth();
+
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
   const [selectedDestinations, setSelectedDestinations] = useState<string[]>(["Kinigi & Musanze"]);
   const [selectedServices, setSelectedServices] = useState<string[]>(["Private Driver"]);
   const [travelers, setTravelers] = useState<string>("2 Adults");
   const [dateRange, setDateRange] = useState<string>("");
-  const [name, setName] = useState<string>(user?.name || "");
-  const [emailOrPhone, setEmailOrPhone] = useState<string>(user?.email || "");
+  const [name, setName] = useState<string>("");
+  const [emailOrPhone, setEmailOrPhone] = useState<string>("");
   const [notes, setNotes] = useState<string>("");
   const [submitted, setSubmitted] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (user) {
+      setName(user.name || "");
+      setEmailOrPhone(user.email || "");
+    }
+  }, [user]);
 
   const destinationsList = [
     "Kinigi & Musanze (Gorillas)",
@@ -50,11 +60,16 @@ export default function CustomExperienceBuilder() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!user) {
+      setIsAuthModalOpen(true);
+      return;
+    }
+
     addBooking({
-      userId: user?.id,
-      clientName: name || user?.name || "Traveler",
-      email: emailOrPhone.includes("@") ? emailOrPhone : (user?.email || "contact-pending@boundlesssouls.com"),
-      phone: emailOrPhone.includes("@") ? (user?.phone || "") : emailOrPhone,
+      userId: user.id,
+      clientName: name || user.name || "Traveler",
+      email: emailOrPhone.includes("@") ? emailOrPhone : (user.email || "contact-pending@boundlesssouls.com"),
+      phone: emailOrPhone.includes("@") ? (user.phone || "") : emailOrPhone,
       destinations: selectedDestinations,
       services: selectedServices,
       travelers: parseInt(travelers) || 2,
@@ -65,12 +80,20 @@ export default function CustomExperienceBuilder() {
   };
 
   const handleWhatsAppDirect = () => {
+    if (!user) {
+      setIsAuthModalOpen(true);
+      return;
+    }
     const message = `Hello Boundless Souls Tours! I would like to plan a custom journey.%0A%0ADestinations: ${selectedDestinations.join(
       ", "
     )}%0AServices: ${selectedServices.join(
       ", "
-    )}%0ATravelers: ${travelers}%0APreferred Dates: ${dateRange || "Flexible"}`;
+    )}%0ATravelers: ${travelers}%0APpreferred Dates: ${dateRange || "Flexible"}`;
     window.open(`https://wa.me/250788000000?text=${message}`, "_blank");
+  };
+
+  const handleQuickDemoLogin = () => {
+    loginUser("traveler@example.com", "password");
   };
 
   return (
@@ -95,7 +118,46 @@ export default function CustomExperienceBuilder() {
             </p>
           </div>
 
-          {submitted ? (
+          {!user ? (
+            /* Auth Required Gate Banner */
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-slate-950/80 border border-amber-500/30 rounded-3xl p-8 sm:p-10 text-center space-y-6 shadow-xl"
+            >
+              <div className="h-16 w-16 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                <Lock className="h-8 w-8 text-amber-400" />
+              </div>
+
+              <div className="space-y-2 max-w-lg mx-auto">
+                <h3 className="text-2xl font-black font-serif text-white">
+                  Sign In Required to Plan Your Trip
+                </h3>
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  To customize itineraries, manage tour requests, and receive direct updates from our travel concierge team in your personal dashboard, please log in or create a traveler account.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+                <Button
+                  onClick={() => setIsAuthModalOpen(true)}
+                  className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-6 rounded-2xl gap-2 shadow-lg shadow-emerald-950/50 text-base"
+                >
+                  <LogIn className="h-5 w-5" />
+                  <span>Sign In or Register to Continue</span>
+                </Button>
+
+                <Button
+                  onClick={handleQuickDemoLogin}
+                  variant="outline"
+                  className="w-full sm:w-auto border-slate-700 hover:bg-slate-800 text-slate-300 font-semibold px-6 py-6 rounded-2xl gap-2 text-sm"
+                >
+                  <UserCheck className="h-4 w-4 text-emerald-400" />
+                  <span>Quick Sign In (Demo Traveler)</span>
+                </Button>
+              </div>
+            </motion.div>
+          ) : submitted ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -106,7 +168,7 @@ export default function CustomExperienceBuilder() {
               </div>
               <h3 className="text-2xl font-bold text-white">Inquiry Received!</h3>
               <p className="text-slate-300 text-sm max-w-md mx-auto">
-                Thank you, {name || "Traveler"}! Our Rwanda travel specialist is reviewing your custom choices and will get in touch shortly with a tailored itinerary.
+                Thank you, {name || user?.name || "Traveler"}! Our Rwanda travel specialist is reviewing your custom choices and will get in touch shortly with a tailored itinerary. You can track this request in your dashboard.
               </p>
               <Button
                 onClick={handleWhatsAppDirect}
@@ -118,6 +180,15 @@ export default function CustomExperienceBuilder() {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Signed In User Pill */}
+              <div className="bg-emerald-950/60 border border-emerald-800/60 px-4 py-2.5 rounded-2xl flex items-center justify-between text-xs">
+                <div className="flex items-center gap-2 text-slate-300">
+                  <UserCheck className="h-4 w-4 text-emerald-400" />
+                  <span>Logged in as <strong className="text-white">{user.name}</strong> ({user.email})</span>
+                </div>
+                <span className="text-emerald-400 font-semibold">Account Connected ✓</span>
+              </div>
+
               {/* Step 1: Select Destinations */}
               <div className="space-y-3">
                 <label className="text-xs font-extrabold uppercase tracking-wider text-slate-300 block flex items-center gap-2">
@@ -149,7 +220,7 @@ export default function CustomExperienceBuilder() {
               <div className="space-y-3">
                 <label className="text-xs font-extrabold uppercase tracking-wider text-slate-300 block flex items-center gap-2">
                   <Sparkles className="h-4 w-4 text-emerald-400" />
-                  <span>2. Select Accommodation & Lifestyle Services</span>
+                  <span>2. Select Accommodation &amp; Lifestyle Services</span>
                 </label>
                 <div className="flex flex-wrap gap-2.5">
                   {servicesList.map((service) => {
@@ -253,6 +324,11 @@ export default function CustomExperienceBuilder() {
           )}
         </div>
       </div>
+
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+      />
     </section>
   );
 }
