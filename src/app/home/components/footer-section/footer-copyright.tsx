@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import { Globe } from "lucide-react";
 import {
   FaFacebookF,
   FaInstagram,
@@ -29,50 +28,39 @@ function FooterCopyright() {
           </div>
         </div>
 
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5 hover:text-white cursor-pointer transition-colors">
-              <Globe className="h-4 w-4 text-blue-400" />
-              <span>English (US)</span>
-            </div>
-            <span>·</span>
-            <span className="font-semibold text-white">$ USD</span>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Link
-              href="https://www.facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-slate-900 p-2 hover:bg-blue-600 hover:text-white transition-colors"
-            >
-              <FaFacebookF className="h-3.5 w-3.5" />
-            </Link>
-            <Link
-              href="https://www.twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-slate-900 p-2 hover:bg-blue-600 hover:text-white transition-colors"
-            >
-              <FaTwitter className="h-3.5 w-3.5" />
-            </Link>
-            <Link
-              href="https://www.instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-slate-900 p-2 hover:bg-blue-600 hover:text-white transition-colors"
-            >
-              <FaInstagram className="h-3.5 w-3.5" />
-            </Link>
-            <Link
-              href="https://www.linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-slate-900 p-2 hover:bg-blue-600 hover:text-white transition-colors"
-            >
-              <FaLinkedinIn className="h-3.5 w-3.5" />
-            </Link>
-          </div>
+        <div className="flex items-center gap-3">
+          <Link
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-slate-900 p-2 hover:bg-blue-600 hover:text-white transition-colors"
+          >
+            <FaFacebookF className="h-3.5 w-3.5" />
+          </Link>
+          <Link
+            href="https://www.twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-slate-900 p-2 hover:bg-blue-600 hover:text-white transition-colors"
+          >
+            <FaTwitter className="h-3.5 w-3.5" />
+          </Link>
+          <Link
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-slate-900 p-2 hover:bg-blue-600 hover:text-white transition-colors"
+          >
+            <FaInstagram className="h-3.5 w-3.5" />
+          </Link>
+          <Link
+            href="https://www.linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-slate-900 p-2 hover:bg-blue-600 hover:text-white transition-colors"
+          >
+            <FaLinkedinIn className="h-3.5 w-3.5" />
+          </Link>
         </div>
       </div>
     </div>
