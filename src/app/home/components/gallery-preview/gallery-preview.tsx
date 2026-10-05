@@ -191,12 +191,6 @@ export default function GalleryPreview() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-800/80 pb-8">
           <div className="space-y-4 max-w-2xl">
-            {/* Humanized Warm Pill Badge */}
-            <div className="inline-flex items-center gap-2 text-amber-300 text-xs font-semibold tracking-wider bg-amber-500/10 border border-amber-500/20 px-3.5 py-1.5 rounded-full backdrop-blur-sm">
-              <Sparkles className="h-3.5 w-3.5 text-amber-400" />
-              <span>Real Stories &amp; Unforgettable Moments</span>
-            </div>
-
             <h2 className="text-3xl sm:text-5xl font-black font-serif text-white tracking-tight leading-tight">
               Rwanda Through the Eyes of Our Guests &amp; Guides
             </h2>

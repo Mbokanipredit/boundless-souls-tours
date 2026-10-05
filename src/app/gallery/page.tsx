@@ -48,10 +48,6 @@ export default function GalleryPage() {
         {/* Gallery Hero Banner */}
         <section className="relative py-20 px-4 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 border-b border-slate-800/80">
           <div className="container mx-auto max-w-4xl text-center space-y-6">
-            <div className="inline-flex items-center gap-2 text-amber-300 text-xs font-semibold tracking-wider bg-amber-500/10 border border-amber-500/20 px-4 py-1.5 rounded-full backdrop-blur-sm">
-              <Sparkles className="h-3.5 w-3.5 text-amber-400" />
-              <span>STORIES &amp; MEMORIES FROM THE TRAIL</span>
-            </div>
             <h1 className="text-4xl sm:text-6xl font-black font-serif text-white tracking-tight leading-tight">
               Rwanda Through Human Eyes
             </h1>
