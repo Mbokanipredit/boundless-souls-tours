@@ -25,7 +25,7 @@ const testimonials: Testimonial[] = [
     role: "Gorilla Trekking Travelers",
     country: "United Kingdom",
     tripType: "Musanze & Kinigi Gorilla Safari",
-    avatar: "/user/micheal-dam.jpg",
+    avatar: "/images/pics/7.jpeg",
     comment:
       "Our gorilla trek in Musanze was the most breathtaking experience of our lives! Boundless Souls Tours arranged every single detail seamlessly—from our private 4x4 driver to park permits and luxury lodge stays. Seeing the silverbacks up close was truly unforgettable.",
     rating: 5,
@@ -36,7 +36,7 @@ const testimonials: Testimonial[] = [
     role: "Wildlife Safari Enthusiast",
     country: "United States",
     tripType: "Akagera Big Five Safari",
-    avatar: "/user/micheal-dam.jpg",
+    avatar: "/images/pics/8.jpeg",
     comment:
       "Akagera National Park blew us away. We saw lions, rhinos, elephants, and giraffes all in one weekend! Our private guide provided by Boundless Souls was super knowledgeable, friendly, and attentive. I cannot recommend them enough.",
     rating: 5,
@@ -47,7 +47,7 @@ const testimonials: Testimonial[] = [
     role: "Honeymoon Travelers",
     country: "France",
     tripType: "Bigogwe Hills & Lake Kivu",
-    avatar: "/user/micheal-dam.jpg",
+    avatar: "/images/pics/9.jpeg",
     comment:
       "We spent a week exploring Bigogwe tea fields, traditional Ankole cattle culture, and relaxing on Lake Kivu. Having a private chef prepare gourmet meals at our lakeside villa made our honeymoon feel exceptionally luxurious and intimate.",
     rating: 5,
@@ -58,7 +58,7 @@ const testimonials: Testimonial[] = [
     role: "Cultural & Lifestyle Visitor",
     country: "Ghana",
     tripType: "Kigali City & Culinary Tour",
-    avatar: "/user/micheal-dam.jpg",
+    avatar: "/images/pics/10.jpeg",
     comment:
       "Kigali is a stunning city, full of vibrant art, history, and amazing food. Boundless Souls Tours made our trip stress-free with quick apartment bookings, smooth airport pickups, and a personalized itinerary. Truly top-notch service!",
     rating: 5,
