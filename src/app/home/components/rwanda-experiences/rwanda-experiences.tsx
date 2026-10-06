@@ -91,7 +91,7 @@ export const experiencesData: ExperienceItem[] = [
     tagline: "Explore Kigali differently.",
     description:
       "Experience the vibrant energy of Kigali through its rich culture, gastronomy, lifestyle, entertainment, beautiful views, and hidden gems. Let us help you discover a side of Africa's cleanest city that goes beyond tourist spots.",
-    image: "/images/pics/5.jpeg",
+    image: "/images/pics/9.jpeg",
     badge: "Urban & Lifestyle",
     highlights: [
       "Art Galleries & Craft Markets",

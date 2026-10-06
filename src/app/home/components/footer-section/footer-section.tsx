@@ -35,16 +35,16 @@ function FooterSection() {
       <FooterNewsLetter />
       
       <div className="container mx-auto px-4 max-w-7xl py-12 border-t border-slate-800">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Contact Us */}
           <div className="space-y-4">
             <h3 className="text-base font-bold text-white uppercase tracking-wider">
               Contact Us
             </h3>
             <div className="space-y-1">
-              <p className="text-xs text-slate-400">Toll Free Customer Care:</p>
-              <Link href="#" className="text-sm font-bold text-blue-400 hover:underline">
-                +(1) 123 456 7890
+              <p className="text-xs text-slate-400">Customer Support:</p>
+              <Link href="tel:+250788000000" className="text-sm font-bold text-blue-400 hover:underline">
+                +250 788 000 000
               </Link>
             </div>
             <div className="space-y-1">
@@ -110,52 +110,6 @@ function FooterSection() {
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Mobile Apps */}
-          <div className="space-y-4">
-            <h3 className="text-base font-bold text-white uppercase tracking-wider">
-              Mobile App
-            </h3>
-            <div className="space-y-3">
-              <Link
-                href="https://www.apple.com/app-store/"
-                target="_blank"
-                className="flex items-center gap-3 p-3 bg-slate-900 border border-slate-800 rounded-xl hover:bg-slate-850 hover:border-slate-700 transition-all"
-              >
-                <Image
-                  src="/icon/apple-store-icon.svg"
-                  alt="Apple Store"
-                  width={24}
-                  height={24}
-                />
-                <div>
-                  <p className="text-[10px] text-slate-400 uppercase font-semibold">
-                    Download on the
-                  </p>
-                  <h4 className="text-xs font-bold text-white">Apple Store</h4>
-                </div>
-              </Link>
-
-              <Link
-                href="https://play.google.com/store/apps"
-                target="_blank"
-                className="flex items-center gap-3 p-3 bg-slate-900 border border-slate-800 rounded-xl hover:bg-slate-850 hover:border-slate-700 transition-all"
-              >
-                <Image
-                  src="/icon/google-play-icon.svg"
-                  alt="Google Play"
-                  width={24}
-                  height={24}
-                />
-                <div>
-                  <p className="text-[10px] text-slate-400 uppercase font-semibold">
-                    Get it on
-                  </p>
-                  <h4 className="text-xs font-bold text-white">Google Play</h4>
-                </div>
-              </Link>
-            </div>
           </div>
         </div>
       </div>

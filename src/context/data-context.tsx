@@ -188,7 +188,7 @@ const initialExperiences: ExperienceItemData[] = [
     tagline: "Explore Kigali differently.",
     description:
       "Experience the vibrant energy of Kigali through its rich culture, gastronomy, lifestyle, entertainment, beautiful views, and hidden gems. Let us help you discover a side of Africa's cleanest city that goes beyond tourist spots.",
-    image: "/images/pics/5.jpeg",
+    image: "/images/pics/9.jpeg",
     badge: "Urban & Lifestyle",
     highlights: [
       "Art Galleries & Craft Markets",
@@ -420,6 +420,9 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const parsed = JSON.parse(savedExps);
         if (Array.isArray(parsed) && parsed.length > 0) {
           const sanitized = parsed.map((exp: any, index: number) => {
+            if (exp.id === "kigali" || exp.title?.toLowerCase().includes("kigali")) {
+              return { ...exp, image: "/images/pics/9.jpeg" };
+            }
             if (!exp.image || exp.image.endsWith(".png") || !exp.image.includes("/images/pics/")) {
               const picNum = (index % 16) + 1;
               return { ...exp, image: `/images/pics/${picNum}.jpeg` };
