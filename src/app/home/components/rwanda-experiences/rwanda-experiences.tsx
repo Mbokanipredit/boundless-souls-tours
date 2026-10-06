@@ -27,7 +27,7 @@ export const experiencesData: ExperienceItem[] = [
     tagline: "An experience you will never forget.",
     description:
       "Journey into Rwanda's breathtaking northern landscapes and experience one of the world's most extraordinary wildlife adventures. Discover the beauty of Musanze, the volcanic landscapes surrounding Kinigi, and gorilla trekking in Volcanoes National Park.",
-    image: "/images/pics/1.jpeg",
+    image: "/images/Kinigi/1.jpeg",
     badge: "Gorilla Safari",
     highlights: [
       "Mountain Gorilla Trekking",
@@ -43,7 +43,7 @@ export const experiencesData: ExperienceItem[] = [
     tagline: "Step into the wild.",
     description:
       "Experience the beauty and excitement of Rwanda's wilderness. From breathtaking savannah landscapes to incredible Big Five wildlife encounters, Akagera offers an unforgettable safari experience for travelers looking to experience nature.",
-    image: "/images/pics/2.jpeg",
+    image: "/images/Akagera/1.jpeg",
     badge: "Wildlife Safari",
     highlights: [
       "Big 5 Game Drives",
@@ -59,7 +59,7 @@ export const experiencesData: ExperienceItem[] = [
     tagline: "Beautiful views. Authentic experiences. Unforgettable memories.",
     description:
       "Escape into the breathtaking countryside of Bigogwe. Discover beautiful rolling green tea landscapes, experience Rwanda's unique long-horned Ankole cattle culture, and enjoy a peaceful and authentic side of the country.",
-    image: "/images/pics/3.jpeg",
+    image: "/images/Bigogwe/1.jpeg",
     badge: "Cultural & Countryside",
     highlights: [
       "Ankole Cattle Culture",
@@ -75,7 +75,7 @@ export const experiencesData: ExperienceItem[] = [
     tagline: "Slow down. Explore. Take it all in.",
     description:
       "Experience the peaceful and breathtaking beauty of Rwanda's lakes and rivers. From relaxing moments by the water of Lake Kivu to scenic boat journeys on Twin Lakes Burera & Ruhondo surrounded by volcanic peaks.",
-    image: "/images/pics/4.jpeg",
+    image: "/images/Rivers%20and%20Lakes/1.jpeg",
     badge: "Lakeside Relaxation",
     highlights: [
       "Lake Kivu Sunset Cruises",
@@ -91,13 +91,45 @@ export const experiencesData: ExperienceItem[] = [
     tagline: "Explore Kigali differently.",
     description:
       "Experience the vibrant energy of Kigali through its rich culture, gastronomy, lifestyle, entertainment, beautiful views, and hidden gems. Let us help you discover a side of Africa's cleanest city that goes beyond tourist spots.",
-    image: "/images/pics/9.jpeg",
+    image: "/images/Kigali/1.jpeg",
     badge: "Urban & Lifestyle",
     highlights: [
       "Art Galleries & Craft Markets",
       "Kigali Genocide Memorial",
       "Rooftop Culinary Experience",
       "Nightlife & Cultural Gems",
+    ],
+  },
+  {
+    id: "nyungwe",
+    title: "NYUNGWE",
+    subtitle: "Ancient Rainforest & Canopy Walk",
+    tagline: "High above the rainforest canopy.",
+    description:
+      "Walk among ancient rainforest giants in Nyungwe National Park. Experience thrilling canopy walks, chimpanzee tracking, and scenic waterfalls in one of Africa's oldest montane rainforests.",
+    image: "/images/Nyungwe/1.jpeg",
+    badge: "Rainforest Safari",
+    highlights: [
+      "Canopy Walkway Experience",
+      "Chimpanzee Tracking",
+      "Kamiranzovu Waterfall Trails",
+      "Endemic Bird Watching",
+    ],
+  },
+  {
+    id: "murukari",
+    title: "MURUKARI",
+    subtitle: "Cultural Heritage & Scenic Hills",
+    tagline: "Authentic culture and landscapes.",
+    description:
+      "Explore the historic and scenic Murukari region. Discover serene green landscapes, local community heritage, and unforgettable Rwandan hospitality.",
+    image: "/images/Murukari/1.jpeg",
+    badge: "Cultural Heritage",
+    highlights: [
+      "Scenic Hill Walks",
+      "Community Heritage Tours",
+      "Traditional Artisan Crafts",
+      "Panoramic Viewpoints",
     ],
   },
 ];
@@ -134,11 +166,7 @@ export default function RwandaExperiences() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl hover:border-emerald-500/40 transition-all">
           <div className="lg:col-span-7 relative min-h-[340px] lg:min-h-[440px]">
             <Image
-              src={
-                experiencesData[0].image && !experiencesData[0].image.endsWith(".png") && experiencesData[0].image.includes("/images/pics/")
-                  ? experiencesData[0].image
-                  : "/images/pics/1.jpeg"
-              }
+              src={experiencesData[0].image || "/images/Kinigi/1.jpeg"}
               alt={experiencesData[0].title}
               fill
               className="object-cover"
@@ -199,11 +227,7 @@ export default function RwandaExperiences() {
               <Card className="h-full bg-slate-900 border-slate-800 hover:border-emerald-500/50 transition-all duration-300 group overflow-hidden rounded-2xl flex flex-col justify-between shadow-xl">
                 <div className="relative aspect-[4/3] w-full overflow-hidden">
                   <Image
-                    src={
-                      exp.image && !exp.image.endsWith(".png") && exp.image.includes("/images/pics/")
-                        ? exp.image
-                        : `/images/pics/${(idx % 16) + 2}.jpeg`
-                    }
+                    src={exp.image || `/images/Pics/${(idx % 16) + 1}.jpeg`}
                     alt={exp.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"

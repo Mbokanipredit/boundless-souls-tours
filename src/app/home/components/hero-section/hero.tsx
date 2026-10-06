@@ -28,7 +28,7 @@ export default function HeroSection() {
       {/* High-Resolution Hero Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/pics/1.jpeg"
+          src="/images/Kinigi/1.jpeg"
           alt="Mountain Gorilla Rwanda"
           fill
           priority

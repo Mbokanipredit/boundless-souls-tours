@@ -55,7 +55,7 @@ export default function AboutSection() {
           <div className="lg:col-span-5 space-y-4">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] border border-slate-200 group">
               <Image
-                src="/images/pics/3.jpeg"
+                src="/images/Bigogwe/1.jpeg"
                 alt="Bigogwe Countryside Rwanda"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"

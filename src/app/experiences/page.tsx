@@ -34,10 +34,7 @@ export default function ExperiencesPage() {
           <div className="container mx-auto px-4 max-w-7xl space-y-20">
             {experiences.map((exp, idx) => {
               const isEven = idx % 2 === 0;
-              const imgSrc =
-                exp.image && !exp.image.endsWith(".png") && exp.image.includes("/images/pics/")
-                  ? exp.image
-                  : `/images/pics/${(idx % 16) + 1}.jpeg`;
+              const imgSrc = exp.image && !exp.image.endsWith(".png") ? exp.image : `/images/Pics/${(idx % 16) + 1}.jpeg`;
 
               return (
                 <div

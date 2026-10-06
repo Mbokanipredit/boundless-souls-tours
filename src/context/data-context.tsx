@@ -124,7 +124,7 @@ const initialExperiences: ExperienceItemData[] = [
     tagline: "An experience you will never forget.",
     description:
       "Journey into Rwanda's breathtaking northern landscapes and experience one of the world's most extraordinary wildlife adventures. Discover the beauty of Musanze, the volcanic landscapes surrounding Kinigi, and gorilla trekking in Volcanoes National Park.",
-    image: "/images/pics/1.jpeg",
+    image: "/images/Kinigi/1.jpeg",
     badge: "Gorilla Safari",
     highlights: [
       "Mountain Gorilla Trekking",
@@ -140,7 +140,7 @@ const initialExperiences: ExperienceItemData[] = [
     tagline: "Step into the wild.",
     description:
       "Experience the beauty and excitement of Rwanda's wilderness. From breathtaking savannah landscapes to incredible Big Five wildlife encounters, Akagera offers an unforgettable safari experience for travelers looking to experience nature.",
-    image: "/images/pics/2.jpeg",
+    image: "/images/Akagera/1.jpeg",
     badge: "Wildlife Safari",
     highlights: [
       "Big 5 Game Drives",
@@ -156,7 +156,7 @@ const initialExperiences: ExperienceItemData[] = [
     tagline: "Beautiful views. Authentic experiences. Unforgettable memories.",
     description:
       "Escape into the breathtaking countryside of Bigogwe. Discover beautiful rolling green tea landscapes, experience Rwanda's unique long-horned Ankole cattle culture, and enjoy a peaceful and authentic side of the country.",
-    image: "/images/pics/3.jpeg",
+    image: "/images/Bigogwe/1.jpeg",
     badge: "Cultural & Countryside",
     highlights: [
       "Ankole Cattle Culture",
@@ -172,7 +172,7 @@ const initialExperiences: ExperienceItemData[] = [
     tagline: "Slow down. Explore. Take it all in.",
     description:
       "Experience the peaceful and breathtaking beauty of Rwanda's lakes and rivers. From relaxing moments by the water of Lake Kivu to scenic boat journeys on Twin Lakes Burera & Ruhondo surrounded by volcanic peaks.",
-    image: "/images/pics/4.jpeg",
+    image: "/images/Rivers%20and%20Lakes/1.jpeg",
     badge: "Lakeside Relaxation",
     highlights: [
       "Lake Kivu Sunset Cruises",
@@ -188,13 +188,45 @@ const initialExperiences: ExperienceItemData[] = [
     tagline: "Explore Kigali differently.",
     description:
       "Experience the vibrant energy of Kigali through its rich culture, gastronomy, lifestyle, entertainment, beautiful views, and hidden gems. Let us help you discover a side of Africa's cleanest city that goes beyond tourist spots.",
-    image: "/images/pics/9.jpeg",
+    image: "/images/Kigali/1.jpeg",
     badge: "Urban & Lifestyle",
     highlights: [
       "Art Galleries & Craft Markets",
       "Kigali Genocide Memorial",
       "Rooftop Culinary Experience",
       "Nightlife & Cultural Gems",
+    ],
+  },
+  {
+    id: "nyungwe",
+    title: "NYUNGWE",
+    subtitle: "Ancient Rainforest & Canopy Walk",
+    tagline: "High above the rainforest canopy.",
+    description:
+      "Walk among ancient rainforest giants in Nyungwe National Park. Experience thrilling canopy walks, chimpanzee tracking, and scenic waterfalls in one of Africa's oldest montane rainforests.",
+    image: "/images/Nyungwe/1.jpeg",
+    badge: "Rainforest Safari",
+    highlights: [
+      "Canopy Walkway Experience",
+      "Chimpanzee Tracking",
+      "Kamiranzovu Waterfall Trails",
+      "Endemic Bird Watching",
+    ],
+  },
+  {
+    id: "murukari",
+    title: "MURUKARI",
+    subtitle: "Cultural Heritage & Scenic Hills",
+    tagline: "Authentic culture and landscapes.",
+    description:
+      "Explore the historic and scenic Murukari region. Discover serene green landscapes, local community heritage, and unforgettable Rwandan hospitality.",
+    image: "/images/Murukari/1.jpeg",
+    badge: "Cultural Heritage",
+    highlights: [
+      "Scenic Hill Walks",
+      "Community Heritage Tours",
+      "Traditional Artisan Crafts",
+      "Panoramic Viewpoints",
     ],
   },
 ];
@@ -416,21 +448,36 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     try {
       const savedExps = localStorage.getItem("bst_experiences");
+      const experienceFolderMap: Record<string, string> = {
+        "kinigi-musanze": "/images/Kinigi/1.jpeg",
+        "akagera": "/images/Akagera/1.jpeg",
+        "bigogwe": "/images/Bigogwe/1.jpeg",
+        "lakes-rivers": "/images/Rivers%20and%20Lakes/1.jpeg",
+        "kigali": "/images/Kigali/1.jpeg",
+        "nyungwe": "/images/Nyungwe/1.jpeg",
+        "murukari": "/images/Murukari/1.jpeg",
+      };
+
       if (savedExps && savedExps !== "undefined" && savedExps !== "null") {
         const parsed = JSON.parse(savedExps);
         if (Array.isArray(parsed) && parsed.length > 0) {
           const sanitized = parsed.map((exp: any, index: number) => {
-            if (exp.id === "kigali" || exp.title?.toLowerCase().includes("kigali")) {
-              return { ...exp, image: "/images/pics/9.jpeg" };
+            if (experienceFolderMap[exp.id]) {
+              return { ...exp, image: experienceFolderMap[exp.id] };
             }
-            if (!exp.image || exp.image.endsWith(".png") || !exp.image.includes("/images/pics/")) {
-              const picNum = (index % 16) + 1;
-              return { ...exp, image: `/images/pics/${picNum}.jpeg` };
+            if (!exp.image || exp.image.endsWith(".png")) {
+              return { ...exp, image: `/images/Pics/${(index % 16) + 1}.jpeg` };
             }
             return exp;
           });
-          setExperiences(sanitized);
-          localStorage.setItem("bst_experiences", JSON.stringify(sanitized));
+
+          // Ensure all initial experiences are present
+          const existingIds = new Set(sanitized.map((e: any) => e.id));
+          const missing = initialExperiences.filter((ie) => !existingIds.has(ie.id));
+          const combined = [...sanitized, ...missing];
+
+          setExperiences(combined);
+          localStorage.setItem("bst_experiences", JSON.stringify(combined));
         } else {
           setExperiences(initialExperiences);
           localStorage.setItem("bst_experiences", JSON.stringify(initialExperiences));

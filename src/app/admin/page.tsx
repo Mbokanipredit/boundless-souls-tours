@@ -1606,22 +1606,22 @@ info@boundlesssouls.com`,
                     onChange={(e) => setNewExp({ ...newExp, image: e.target.value })}
                     className="w-full h-9 rounded-md border border-slate-800 bg-slate-950 px-3 text-xs text-white"
                   >
-                    <option value="/images/pics/1.jpeg">Photo 1 (Gorilla / Volcanoes)</option>
-                    <option value="/images/pics/2.jpeg">Photo 2 (Akagera Wildlife)</option>
-                    <option value="/images/pics/3.jpeg">Photo 3 (Bigogwe Hills)</option>
-                    <option value="/images/pics/4.jpeg">Photo 4 (Lake Kivu)</option>
-                    <option value="/images/pics/5.jpeg">Photo 5 (Kigali City)</option>
-                    <option value="/images/pics/6.jpeg">Photo 6</option>
-                    <option value="/images/pics/7.jpeg">Photo 7</option>
-                    <option value="/images/pics/8.jpeg">Photo 8</option>
-                    <option value="/images/pics/9.jpeg">Photo 9</option>
-                    <option value="/images/pics/10.jpeg">Photo 10</option>
-                    <option value="/images/pics/11.jpeg">Photo 11</option>
-                    <option value="/images/pics/12.jpeg">Photo 12</option>
-                    <option value="/images/pics/13.jpeg">Photo 13</option>
-                    <option value="/images/pics/14.jpeg">Photo 14</option>
-                    <option value="/images/pics/15.jpeg">Photo 15</option>
-                    <option value="/images/pics/16.jpeg">Photo 16</option>
+                    <option value="/images/Kinigi/1.jpeg">Kinigi & Musanze (/images/Kinigi/1.jpeg)</option>
+                    <option value="/images/Akagera/1.jpeg">Akagera Safari (/images/Akagera/1.jpeg)</option>
+                    <option value="/images/Bigogwe/1.jpeg">Bigogwe Countryside (/images/Bigogwe/1.jpeg)</option>
+                    <option value="/images/Rivers%20and%20Lakes/1.jpeg">Lakes & Rivers (/images/Rivers and Lakes/1.jpeg)</option>
+                    <option value="/images/Kigali/1.jpeg">Kigali City (/images/Kigali/1.jpeg)</option>
+                    <option value="/images/Nyungwe/1.jpeg">Nyungwe Rainforest (/images/Nyungwe/1.jpeg)</option>
+                    <option value="/images/Murukari/1.jpeg">Murukari Heritage (/images/Murukari/1.jpeg)</option>
+                    <option value="/images/Pics/1.jpeg">Pics Photo 1</option>
+                    <option value="/images/Pics/2.jpeg">Pics Photo 2</option>
+                    <option value="/images/Pics/3.jpeg">Pics Photo 3</option>
+                    <option value="/images/Pics/4.jpeg">Pics Photo 4</option>
+                    <option value="/images/Pics/5.jpeg">Pics Photo 5</option>
+                    <option value="/images/Pics/6.jpeg">Pics Photo 6</option>
+                    <option value="/images/Pics/7.jpeg">Pics Photo 7</option>
+                    <option value="/images/Pics/8.jpeg">Pics Photo 8</option>
+                    <option value="/images/Pics/9.jpeg">Pics Photo 9</option>
                   </select>
                 </div>
               </div>
