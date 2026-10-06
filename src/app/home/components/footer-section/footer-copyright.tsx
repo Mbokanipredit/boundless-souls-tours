@@ -4,7 +4,6 @@ import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
-  FaTwitter,
 } from "react-icons/fa6";
 
 function FooterCopyright() {
@@ -33,23 +32,17 @@ function FooterCopyright() {
             href="https://www.facebook.com"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Facebook"
             className="rounded-full bg-slate-900 p-2 hover:bg-blue-600 hover:text-white transition-colors"
           >
             <FaFacebookF className="h-3.5 w-3.5" />
           </Link>
           <Link
-            href="https://www.twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-slate-900 p-2 hover:bg-blue-600 hover:text-white transition-colors"
-          >
-            <FaTwitter className="h-3.5 w-3.5" />
-          </Link>
-          <Link
             href="https://www.instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-slate-900 p-2 hover:bg-blue-600 hover:text-white transition-colors"
+            aria-label="Instagram"
+            className="rounded-full bg-slate-900 p-2 hover:bg-pink-600 hover:text-white transition-colors"
           >
             <FaInstagram className="h-3.5 w-3.5" />
           </Link>
@@ -57,6 +50,7 @@ function FooterCopyright() {
             href="https://www.linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="LinkedIn"
             className="rounded-full bg-slate-900 p-2 hover:bg-blue-600 hover:text-white transition-colors"
           >
             <FaLinkedinIn className="h-3.5 w-3.5" />
