@@ -79,8 +79,9 @@ export const experiencesData: ExperienceItem[] = [
     image: "/images/Bigogwe/1.jpeg",
     images: [
       "/images/Bigogwe/1.jpeg",
-      "/images/pics/3.jpeg",
-      "/images/pics/7.jpeg",
+      "/images/Bigogwe/2.jpeg",
+      "/images/Bigogwe/3.jpeg",
+      "/images/Bigogwe/4.jpeg",
     ],
     badge: "Cultural & Countryside",
     highlights: [
@@ -167,7 +168,6 @@ export const experiencesData: ExperienceItem[] = [
     images: [
       "/images/Murukari/1.jpeg",
       "/images/Murukari/2.jpeg",
-      "/images/pics/14.jpeg",
     ],
     badge: "Cultural Heritage",
     highlights: [

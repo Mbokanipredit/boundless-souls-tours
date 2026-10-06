@@ -175,8 +175,9 @@ const initialExperiences: ExperienceItemData[] = [
     image: "/images/Bigogwe/1.jpeg",
     images: [
       "/images/Bigogwe/1.jpeg",
-      "/images/pics/3.jpeg",
-      "/images/pics/7.jpeg",
+      "/images/Bigogwe/2.jpeg",
+      "/images/Bigogwe/3.jpeg",
+      "/images/Bigogwe/4.jpeg",
     ],
     badge: "Cultural & Countryside",
     highlights: [
@@ -505,11 +506,11 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const experienceImagesMap: Record<string, string[]> = {
         "kinigi-musanze": ["/images/Kinigi/1.jpeg", "/images/Kinigi/2.jpeg", "/images/Kinigi/3.jpeg", "/images/Kinigi/4.jpeg"],
         "akagera": ["/images/Akagera/1.jpeg", "/images/Akagera/2.jpeg", "/images/Akagera/3.jpeg", "/images/Akagera/4.jpeg", "/images/Akagera/5.jpeg", "/images/Akagera/6.jpeg", "/images/Akagera/7.jpeg"],
-        "bigogwe": ["/images/Bigogwe/1.jpeg", "/images/pics/3.jpeg", "/images/pics/7.jpeg"],
+        "bigogwe": ["/images/Bigogwe/1.jpeg", "/images/Bigogwe/2.jpeg", "/images/Bigogwe/3.jpeg", "/images/Bigogwe/4.jpeg"],
         "lakes-rivers": ["/images/Rivers%20and%20Lakes/1.jpeg", "/images/Rivers%20and%20Lakes/2.jpeg", "/images/Rivers%20and%20Lakes/3.jpeg"],
         "kigali": ["/images/Kigali/1.jpeg", "/images/Kigali/2.jpeg", "/images/Kigali/3.jpeg", "/images/pics/9.jpeg"],
         "nyungwe": ["/images/Nyungwe/1.jpeg", "/images/Nyungwe/2.jpeg", "/images/Nyungwe/3.jpeg", "/images/Nyungwe/4.jpeg", "/images/Nyungwe/5.jpeg"],
-        "murukari": ["/images/Murukari/1.jpeg", "/images/Murukari/2.jpeg", "/images/pics/14.jpeg"],
+        "murukari": ["/images/Murukari/1.jpeg", "/images/Murukari/2.jpeg"],
       };
 
       if (savedExps && savedExps !== "undefined" && savedExps !== "null") {
@@ -521,7 +522,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
             return {
               ...exp,
               image: mainImg,
-              images: (exp.images && exp.images.length > 0) ? exp.images : defaultImages,
+              images: experienceImagesMap[exp.id] || exp.images || defaultImages,
             };
           });
 
