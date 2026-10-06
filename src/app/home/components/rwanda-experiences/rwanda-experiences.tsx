@@ -134,7 +134,11 @@ export default function RwandaExperiences() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl hover:border-emerald-500/40 transition-all">
           <div className="lg:col-span-7 relative min-h-[340px] lg:min-h-[440px]">
             <Image
-              src={experiencesData[0].image}
+              src={
+                experiencesData[0].image && !experiencesData[0].image.endsWith(".png") && experiencesData[0].image.includes("/images/pics/")
+                  ? experiencesData[0].image
+                  : "/images/pics/1.jpeg"
+              }
               alt={experiencesData[0].title}
               fill
               className="object-cover"
@@ -195,7 +199,11 @@ export default function RwandaExperiences() {
               <Card className="h-full bg-slate-900 border-slate-800 hover:border-emerald-500/50 transition-all duration-300 group overflow-hidden rounded-2xl flex flex-col justify-between shadow-xl">
                 <div className="relative aspect-[4/3] w-full overflow-hidden">
                   <Image
-                    src={exp.image}
+                    src={
+                      exp.image && !exp.image.endsWith(".png") && exp.image.includes("/images/pics/")
+                        ? exp.image
+                        : `/images/pics/${(idx % 16) + 2}.jpeg`
+                    }
                     alt={exp.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"

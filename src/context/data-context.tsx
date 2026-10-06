@@ -418,7 +418,20 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const savedExps = localStorage.getItem("bst_experiences");
       if (savedExps && savedExps !== "undefined" && savedExps !== "null") {
         const parsed = JSON.parse(savedExps);
-        if (Array.isArray(parsed)) setExperiences(parsed);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const sanitized = parsed.map((exp: any, index: number) => {
+            if (!exp.image || exp.image.endsWith(".png") || !exp.image.includes("/images/pics/")) {
+              const picNum = (index % 16) + 1;
+              return { ...exp, image: `/images/pics/${picNum}.jpeg` };
+            }
+            return exp;
+          });
+          setExperiences(sanitized);
+          localStorage.setItem("bst_experiences", JSON.stringify(sanitized));
+        } else {
+          setExperiences(initialExperiences);
+          localStorage.setItem("bst_experiences", JSON.stringify(initialExperiences));
+        }
       } else {
         localStorage.setItem("bst_experiences", JSON.stringify(initialExperiences));
       }
