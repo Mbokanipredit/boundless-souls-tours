@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import HomeLayout from "../home/layout";
 import { MapPin, Compass, CheckCircle2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useData } from "@/context/data-context";
+import ExperienceImageSlider from "@/components/ui/experience-image-slider";
 
 export default function ExperiencesPage() {
   const { experiences } = useData();
@@ -34,7 +34,10 @@ export default function ExperiencesPage() {
           <div className="container mx-auto px-4 max-w-7xl space-y-20">
             {experiences.map((exp, idx) => {
               const isEven = idx % 2 === 0;
-              const imgSrc = exp.image && !exp.image.endsWith(".png") ? exp.image : `/images/Pics/${(idx % 16) + 1}.jpeg`;
+              const imagesList =
+                exp.images && exp.images.length > 0
+                  ? exp.images
+                  : [exp.image || `/images/pics/${(idx % 16) + 1}.jpeg`];
 
               return (
                 <div
@@ -42,24 +45,17 @@ export default function ExperiencesPage() {
                   id={exp.id}
                   className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center scroll-mt-32"
                 >
-                  {/* Image Side */}
+                  {/* Image Side with Slideshow */}
                   <div
-                    className={`lg:col-span-6 relative aspect-[4/3] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl group ${
+                    className={`lg:col-span-6 relative aspect-[4/3] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl ${
                       isEven ? "lg:order-1" : "lg:order-2"
                     }`}
                   >
-                    <Image
-                      src={imgSrc}
+                    <ExperienceImageSlider
+                      images={imagesList}
                       alt={exp.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      badge={exp.badge}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                    <div className="absolute top-4 left-4 z-10">
-                      <span className="px-4 py-1.5 rounded-full bg-emerald-600 text-white font-extrabold text-xs tracking-wider shadow-md">
-                        {exp.badge}
-                      </span>
-                    </div>
                   </div>
 
                   {/* Details Side */}

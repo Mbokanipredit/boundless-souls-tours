@@ -64,6 +64,7 @@ export interface ExperienceItemData {
   tagline: string;
   description: string;
   image: string;
+  images?: string[];
   badge: string;
   highlights: string[];
 }
@@ -125,6 +126,12 @@ const initialExperiences: ExperienceItemData[] = [
     description:
       "Journey into Rwanda's breathtaking northern landscapes and experience one of the world's most extraordinary wildlife adventures. Discover the beauty of Musanze, the volcanic landscapes surrounding Kinigi, and gorilla trekking in Volcanoes National Park.",
     image: "/images/Kinigi/1.jpeg",
+    images: [
+      "/images/Kinigi/1.jpeg",
+      "/images/Kinigi/2.jpeg",
+      "/images/Kinigi/3.jpeg",
+      "/images/Kinigi/4.jpeg",
+    ],
     badge: "Gorilla Safari",
     highlights: [
       "Mountain Gorilla Trekking",
@@ -141,6 +148,15 @@ const initialExperiences: ExperienceItemData[] = [
     description:
       "Experience the beauty and excitement of Rwanda's wilderness. From breathtaking savannah landscapes to incredible Big Five wildlife encounters, Akagera offers an unforgettable safari experience for travelers looking to experience nature.",
     image: "/images/Akagera/1.jpeg",
+    images: [
+      "/images/Akagera/1.jpeg",
+      "/images/Akagera/2.jpeg",
+      "/images/Akagera/3.jpeg",
+      "/images/Akagera/4.jpeg",
+      "/images/Akagera/5.jpeg",
+      "/images/Akagera/6.jpeg",
+      "/images/Akagera/7.jpeg",
+    ],
     badge: "Wildlife Safari",
     highlights: [
       "Big 5 Game Drives",
@@ -157,6 +173,11 @@ const initialExperiences: ExperienceItemData[] = [
     description:
       "Escape into the breathtaking countryside of Bigogwe. Discover beautiful rolling green tea landscapes, experience Rwanda's unique long-horned Ankole cattle culture, and enjoy a peaceful and authentic side of the country.",
     image: "/images/Bigogwe/1.jpeg",
+    images: [
+      "/images/Bigogwe/1.jpeg",
+      "/images/pics/3.jpeg",
+      "/images/pics/7.jpeg",
+    ],
     badge: "Cultural & Countryside",
     highlights: [
       "Ankole Cattle Culture",
@@ -173,6 +194,11 @@ const initialExperiences: ExperienceItemData[] = [
     description:
       "Experience the peaceful and breathtaking beauty of Rwanda's lakes and rivers. From relaxing moments by the water of Lake Kivu to scenic boat journeys on Twin Lakes Burera & Ruhondo surrounded by volcanic peaks.",
     image: "/images/Rivers%20and%20Lakes/1.jpeg",
+    images: [
+      "/images/Rivers%20and%20Lakes/1.jpeg",
+      "/images/Rivers%20and%20Lakes/2.jpeg",
+      "/images/Rivers%20and%20Lakes/3.jpeg",
+    ],
     badge: "Lakeside Relaxation",
     highlights: [
       "Lake Kivu Sunset Cruises",
@@ -189,6 +215,12 @@ const initialExperiences: ExperienceItemData[] = [
     description:
       "Experience the vibrant energy of Kigali through its rich culture, gastronomy, lifestyle, entertainment, beautiful views, and hidden gems. Let us help you discover a side of Africa's cleanest city that goes beyond tourist spots.",
     image: "/images/Kigali/1.jpeg",
+    images: [
+      "/images/Kigali/1.jpeg",
+      "/images/Kigali/2.jpeg",
+      "/images/Kigali/3.jpeg",
+      "/images/pics/9.jpeg",
+    ],
     badge: "Urban & Lifestyle",
     highlights: [
       "Art Galleries & Craft Markets",
@@ -205,6 +237,13 @@ const initialExperiences: ExperienceItemData[] = [
     description:
       "Walk among ancient rainforest giants in Nyungwe National Park. Experience thrilling canopy walks, chimpanzee tracking, and scenic waterfalls in one of Africa's oldest montane rainforests.",
     image: "/images/Nyungwe/1.jpeg",
+    images: [
+      "/images/Nyungwe/1.jpeg",
+      "/images/Nyungwe/2.jpeg",
+      "/images/Nyungwe/3.jpeg",
+      "/images/Nyungwe/4.jpeg",
+      "/images/Nyungwe/5.jpeg",
+    ],
     badge: "Rainforest Safari",
     highlights: [
       "Canopy Walkway Experience",
@@ -221,6 +260,11 @@ const initialExperiences: ExperienceItemData[] = [
     description:
       "Explore the historic and scenic Murukari region. Discover serene green landscapes, local community heritage, and unforgettable Rwandan hospitality.",
     image: "/images/Murukari/1.jpeg",
+    images: [
+      "/images/Murukari/1.jpeg",
+      "/images/Murukari/2.jpeg",
+      "/images/pics/14.jpeg",
+    ],
     badge: "Cultural Heritage",
     highlights: [
       "Scenic Hill Walks",
@@ -458,17 +502,27 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         "murukari": "/images/Murukari/1.jpeg",
       };
 
+      const experienceImagesMap: Record<string, string[]> = {
+        "kinigi-musanze": ["/images/Kinigi/1.jpeg", "/images/Kinigi/2.jpeg", "/images/Kinigi/3.jpeg", "/images/Kinigi/4.jpeg"],
+        "akagera": ["/images/Akagera/1.jpeg", "/images/Akagera/2.jpeg", "/images/Akagera/3.jpeg", "/images/Akagera/4.jpeg", "/images/Akagera/5.jpeg", "/images/Akagera/6.jpeg", "/images/Akagera/7.jpeg"],
+        "bigogwe": ["/images/Bigogwe/1.jpeg", "/images/pics/3.jpeg", "/images/pics/7.jpeg"],
+        "lakes-rivers": ["/images/Rivers%20and%20Lakes/1.jpeg", "/images/Rivers%20and%20Lakes/2.jpeg", "/images/Rivers%20and%20Lakes/3.jpeg"],
+        "kigali": ["/images/Kigali/1.jpeg", "/images/Kigali/2.jpeg", "/images/Kigali/3.jpeg", "/images/pics/9.jpeg"],
+        "nyungwe": ["/images/Nyungwe/1.jpeg", "/images/Nyungwe/2.jpeg", "/images/Nyungwe/3.jpeg", "/images/Nyungwe/4.jpeg", "/images/Nyungwe/5.jpeg"],
+        "murukari": ["/images/Murukari/1.jpeg", "/images/Murukari/2.jpeg", "/images/pics/14.jpeg"],
+      };
+
       if (savedExps && savedExps !== "undefined" && savedExps !== "null") {
         const parsed = JSON.parse(savedExps);
         if (Array.isArray(parsed) && parsed.length > 0) {
           const sanitized = parsed.map((exp: any, index: number) => {
-            if (experienceFolderMap[exp.id]) {
-              return { ...exp, image: experienceFolderMap[exp.id] };
-            }
-            if (!exp.image || exp.image.endsWith(".png")) {
-              return { ...exp, image: `/images/Pics/${(index % 16) + 1}.jpeg` };
-            }
-            return exp;
+            const defaultImages = experienceImagesMap[exp.id] || (exp.image ? [exp.image] : [`/images/Pics/${(index % 16) + 1}.jpeg`]);
+            const mainImg = experienceFolderMap[exp.id] || exp.image || defaultImages[0];
+            return {
+              ...exp,
+              image: mainImg,
+              images: (exp.images && exp.images.length > 0) ? exp.images : defaultImages,
+            };
           });
 
           // Ensure all initial experiences are present
